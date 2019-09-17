@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script type="text/javascript">
+       
+       function Addition(){
+            var n1=document.getElementById("n1").value;
+            var n2=document.getElementById("n2").value;
+            var errorMessageNumber1=document.getElementById("errorMessageNumber1").value;
+            var errorMessageNumber2=document.getElementById("errorMessageNumber2").value;
+            var resultDiv = document.getElementById("resultDiv")
+
+            if (number1.length == 0) {
+                errorMessageNumber1.innerHTML = "<font color=red>Please enter number 1 to proceed</font>"
+                errorMessageNumber2.innerHTML = ""
+                resultDiv.innerHTML = ""
+            }
+            else if (number2.length == 0) {
+                errorMessageNumber2.innerHTML = "<font color=red>Please enter number 2 to proceed</font>"
+                errorMessageNumber1.innerHTML = ""
+                resultDiv.innerHTML = ""
+            }
+            else 
+            {
+                var result = parseInt(number1) + parseInt(number2);
+                errorMessageNumber1.innerHTML = ""
+                errorMessageNumber2.innerHTML = ""
+                resultDiv.innerHTML = "<font color=green>Sum is :"+result;
+            }
+
+        }
+        
+        </script>
+</head>
+        <body>
+            <form>
+                Number 1 : <input type="text" name="n1" id="n1"><span id="errorMessageNumber1"></span>
+            </br>
+            Number 2 : <input type="text" name="n2" id="n2"><span id="errorMessageNumber2"></span>
+
+
+            <input type="button" value="Add" onclick="Addition()">
+            </form>
+        </body>
+    
+</html>

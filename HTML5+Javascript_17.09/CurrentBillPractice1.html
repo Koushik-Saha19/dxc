@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        
+    billNumber=parseInt(prompt("Enter the bill number"))
+    mainBill=parseInt(prompt("Enter your bill"))
+    today= new Date();
+    daysLeft= 15-today.getDate()
+    var fine=0
+    while(daysLeft<0){
+      fine=fine+50
+      daysLeft++
+    }
+    netBill= mainBill + fine
+
+    alert("Total bill to pay "+ netBill )
+        </script>
+    </head>
+   
+</html>

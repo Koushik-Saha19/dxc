@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        function addTwoNumbers(){
+        var result =confirm("Do u want to continue")
+        if(result==true){
+        n1=parseInt(prompt("Enter first number"));
+        n2=parseInt(prompt("Enter 2nd number"));
+        N=n1+n2
+        //the above line can also be writen as alert(n1+"+"+n2+ "=" +N)
+         alert(`${n1} + ${n2} = ${n1+n2}`)
+        }
+        else{
+            alert("Why did u visit here?")
+        }
+        }
+        function displayMessage(){
+            var d =new Date();
+            if(d.getHours>12)
+            {
+                alert("Good Afternoon")
+            }
+               else if(d.getHours>18) {
+                   alert("Good Evening")
+               }
+               else{
+                   alert("Good Morning")
+               }
+                          alert("Today is:" + d)
+        }
+        function roomTemparature(temp){
+            alert(temp)
+            return temp
+        }
+        function displayTempStatus(){
+            var t = roomTemparature(20);
+            if(t>30){
+                alert("Too Hot")
+            }
+            else{
+                alert("Too Cold")
+            }
+        }
+        </script>
+    </head>
+
+    <body>
+
+   <input type="image" src="CAR1.jpg" value="carImage"id="carImage"/> 
+   <!--if we add image in this way then the image will go the server side-->
+   <br/>
+   <img src="CAR2.jpg" height="500" width="800"/>
+     <!--if we add image in this way then the image will be at the client side only and will not go to server side-->
+   <input type="button" value="Addnumbers" onclick="addTwoNumbers()">
+   <input type="button" value="DisplayMessage" onclick="displayMessage()">
+   <input type="button" value="RoomTemparature" onclick="roomTemparature(20)">
+   <input type="button" value="DisplayTempStatus" onclick="displayTempStatus()">
+
+    </body>
+</html>
