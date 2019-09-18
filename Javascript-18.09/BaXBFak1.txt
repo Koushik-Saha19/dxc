@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Validate</title>
+    <script>
+        function check() {
+            i = document.f1.choose.options.selectedIndex;
+            if (i == 0)
+                alert("Correct");
+            else
+              alert("Your choice, " + document.f1.choose.options[i].text + "- is incorrect");
+        }
+    </script>
+</head>
+
+<body>
+    <form name=f1>
+        Which of the following is not true about JavaScript?
+        <select name="choose" onChange="check()">
+            <option>JavaScript is object-oriented language</option>
+            <option>JavaScript is loosely typed language</option>
+            <option>JavaScript is used for client side validations</option>
+            <option>JavaScript is platform independent</option>
+        </select></form>
+</body>
+
+</html>
