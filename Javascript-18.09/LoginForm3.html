@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    
+    <title>Customer Form</title>
+    <script type="text/javascript" src="LoginFormCheckFunction.js">
+    
+    </script>
+</head>
+<body>
+    <h2><center>LOGIN FORM</center></h2>
+    <form action="success.html" onsubmit="return check()"><center>
+    
+
+    
+        UserName: <input type="text" name="userName"id="userName"/><span id="user_Name"></span>
+        <br/>
+        <br/>
+        Password: <input type="text" name="password"id="password"/><span id="pass_word"></span>
+        <br/>
+        <br/>
+        <input type="submit" value="Login">
+        <input type="button" value="Check"onclick="check()">
+        <input type="reset" value="clear"/>
+
+        <div id="userNamePassword"></div>
+        
+        
+
+
+</center></form>
+
+ <a href="RegistrationForm.html"><center>Register</center></a>
+
+</body>
+</html>

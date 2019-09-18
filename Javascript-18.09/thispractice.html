@@ -1,0 +1,26 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+        
+        function check(p,q){
+            len= q.options.length
+            op= new Option(p.value, p.value)
+            q.options[len]=op
+        }
+        </script>
+</head>
+
+<body>
+    <form>
+
+        Guests Name: <input type="text" onblur="check(this,this.form.guestList)">
+        <select name="guestList">
+            <option>---select Guest---</option>
+        </br>
+        </select>
+        
+    </form>
+
+</body>
+</html>

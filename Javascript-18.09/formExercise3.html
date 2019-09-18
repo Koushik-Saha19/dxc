@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script type="text/javascript">
+       
+       function Addition(){
+            var n1=document.getElementById("n1").value;
+            var n2=document.getElementById("n2").value;
+            var errorMessageNumber1=document.getElementById("errorMessageNumber1");
+            var errorMessageNumber2=document.getElementById("errorMessageNumber2");
+            var resultDiv = document.getElementById("resultDiv")
+
+            if (n1.length == 0) {
+                errorMessageNumber1.innerHTML = "<font color=red>Please enter number 1 to proceed</font>"
+                errorMessageNumber2.innerHTML = ""
+                resultDiv.innerHTML = ""
+            }
+            else if (n2.length == 0) {
+                errorMessageNumber2.innerHTML = "<font color=red>Please enter number 2 to proceed</font>"
+                errorMessageNumber1.innerHTML = ""
+                resultDiv.innerHTML = ""
+            }
+            else 
+            {
+                var result = parseInt(n1) + parseInt(n2);
+                errorMessageNumber1.innerHTML = ""
+                errorMessageNumber2.innerHTML = ""
+                resultDiv.innerHTML = "<font color=green>Sum is :</font>"+result;
+            }
+
+        }
+        
+        </script>
+</head>
+        <body>
+            <form>
+                Number 1 : <input type="text" name="n1" id="n1"onfocus="check()"><span id="errorMessageNumber1"></span>
+            </br>
+            Number 2 : <input type="text" name="n2" id="n2"onfocus="check()"onblur="check()"onkeyup="check()"><span id="errorMessageNumber2"></span>
+
+            </br>
+            <input type="button" value="Add" onclick="Addition()">
+            <div id="resultDiv"></div>
+            </form>
+        </body>
+    
+</html>
