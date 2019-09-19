@@ -2,14 +2,19 @@
 
 <head>
     <script type="text/javascript">
-        var NumOfRow = 1;
+        var NumOfRow = 0;
         function Button1_onclick() {
             NumOfRow++; // get the refference of the main Div 
             var mainDiv = document.getElementById('MainDiv'); // create new div that will work as a container 
             var newDiv = document.createElement('div');
             newDiv.setAttribute('id', 'innerDiv' + NumOfRow); //create span to contain the text 
+           
             var newSpan = document.createElement('span');
-            newSpan.innerHTML = "Enter Your Mail Address "; // create new textbox for email entry 
+            newSpan.innerHTML = "Enter Your Mail Address :"; // create new textbox for email entry 
+            var newspaceCreatingSpan1 = document.createElement('span');
+            newspaceCreatingSpan1.innerHTML = " ";
+            var newspaceCreatingSpan2 = document.createElement('span');
+            newspaceCreatingSpan2.innerHTML = " ";
             var newTextBox = document.createElement('input');
             newTextBox.type = 'text';
             newTextBox.setAttribute('id', 'txtAddr' + NumOfRow); // create remove button for each email adress 
@@ -30,14 +35,17 @@
             displayButton.id = 'btn' + NumOfRow; // attach event for remove button click 
            displayButton.onclick = function display() 
             {
-                alert("Welcome" + newTextBox.value)
+                alert("Welcome " + newTextBox.value)
             } // append the span, textbox and the button 
 
-
+            
             newDiv.appendChild(newSpan);
             newDiv.appendChild(newTextBox);
+            newDiv.appendChild(newspaceCreatingSpan1);
             newDiv.appendChild(newButton); // finally append the new div to the main div 
+            newDiv.appendChild(newspaceCreatingSpan2);
             newDiv.appendChild(displayButton);
+            
             mainDiv.appendChild(newDiv);
         } 
 
@@ -46,7 +54,7 @@
 </head>
 
 <body>
-    <div id="MainDiv"> Enter Your Mail Address <input id="txtAddr1" type="text" />
-    </div>
+    <div id="MainDiv"> Enter Your Mail Address :<input type="text">
+        <span><input type="button" value="Add more" onclick="Button1_onclick()"></span> </div>
 </body>
 </html>
