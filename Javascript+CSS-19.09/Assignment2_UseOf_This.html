@@ -25,15 +25,26 @@
             x = c
          }
         function checkout(r,s){
-            rem = r.selectedIndex
+           
            var d = x
            len1= s.options.length
-            op2= new Option(r.options[rem].value, r.options[rem].value)
+            op2= new Option(d.value, d.value)
             s.options[len1]=op2
-            r.options[rem] = null
-            alert("Your checkout is successful")
-            
+            alert("Your checkout is successful");
             document.getElementById("Text2").value = " " ;
+           // r.options[rem] = null
+           for(i=0;i<r.length;i++){
+               if(r.options[i]==d){
+                   y=i
+                   
+               }
+               break;
+           }
+
+             r.options[y] = null;
+           
+            
+           
 
         }
         
@@ -55,7 +66,7 @@
         </br></br>          
 
         CheckOut: <input type = "text" name="Text2"id="Text2"onblur="checkoutPassValue(this)">
-                  <input type="button" value="Add to CheckOutList" onclick="checkout(this. this.form.guestList,this.form.CheckOutList)" >
+                  <input type="button" value="Add to CheckOutList" onclick="checkout(this.form.guestList,this.form.CheckOutList)" >
 
     
     
