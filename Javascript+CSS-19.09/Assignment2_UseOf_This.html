@@ -1,0 +1,73 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+        
+        var b,x;
+       
+        function passValue(a){
+           b = a
+        }
+        
+       
+        function checkin(q){
+            var p = b
+            len= q.options.length
+            op1= new Option(p.value, p.value) // here we r passing p.value two times..bcz 1st p.value gives VALUE and 2nd p.value gives the TEXT(text content)
+            q.options[len]=op1
+            alert("Your guest is added successfully")
+             
+            document.getElementById("Text1").value = " " ;
+                
+             }
+
+         function checkoutPassValue(c){
+            x = c
+         }
+        function checkout(r,s){
+            rem = r.selectedIndex
+           var d = x
+           len1= s.options.length
+            op2= new Option(r.options[rem].value, r.options[rem].value)
+            s.options[len1]=op2
+            r.options[rem] = null
+            alert("Your checkout is successful")
+            
+            document.getElementById("Text2").value = " " ;
+
+        }
+        
+        </script>
+</head>
+
+<body>
+    <form>
+
+        Guests Name: <input type="text" id="Text1" onblur="passValue(this)">
+                     <input type="button" value="Add the Guest" onclick="checkin(this.form.guestList)" >
+        
+    </br></br>
+    
+    List of the Guests: <select name="guestList">
+        <option>---Guest---</option>
+
+                         </select> 
+        </br></br>          
+
+        CheckOut: <input type = "text" name="Text2"id="Text2"onblur="checkoutPassValue(this)">
+                  <input type="button" value="Add to CheckOutList" onclick="checkout(this. this.form.guestList,this.form.CheckOutList)" >
+
+    
+    
+                        
+    </br></br> 
+        List of the CheckOut: <select name="CheckOutList">
+                    <option>---CheckOut---</option>
+                
+                              </select>
+                    
+        
+    </form>
+
+</body>
+</html>
