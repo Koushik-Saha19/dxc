@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        
+       
+                function count(){
+                    var div1 = document.getElementById("div1");
+                    var Text = document.getElementById("txtbox").value;
+                    
+                    n = Text.length;
+                    N = 15-n;
+                    
+               div1.innerHTML = "<b><font>number of charcter remaining</font></b> " +  N
+               
+               
+               }
+               function prevent(){
+                   if(N==0){
+                       document.getElementById("txtbox").inputMode
+                   }
+               }
+                </script>
+    
+</head>
+    <body>
+        <form><center>
+        </br>
+        <h2>Fill the following box</h2><br>
+        <input type="text" name="txtbox" id="txtbox" maxlength="15" onfocus="count()" oninput="count()" oninput="prevent()"><br>
+        <div id="div1"></div>
+    </center></form>
+    </body>
+</html>
