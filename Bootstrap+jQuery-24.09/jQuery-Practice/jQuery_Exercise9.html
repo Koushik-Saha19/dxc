@@ -1,0 +1,29 @@
+<html>
+    <head>
+            <script src="jquery-3.4.1.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#a").click(function(){
+                        $("#b").slideToggle(1000);//Here '1000' is the time in milisecond....it is the time in which panel will come down....we can also write keywords 'fast','slow' inplace of the time(in ms)
+                    })
+                })
+                </script>
+                <style type="text/css">
+                #a,#b{
+                    padding: 5px;
+                    text-align: center;
+                    background-color: #e5eecc;
+                    border: solid 1px #c3c3c3
+                }
+                #b{
+                    padding: 50px;
+                    display: none
+                }
+                </style>
+
+    </head>
+    <body>
+        <div id="a">Click to slide down the panel</div>
+        <div id="b">Enjoy</div>
+    </body>
+</html>

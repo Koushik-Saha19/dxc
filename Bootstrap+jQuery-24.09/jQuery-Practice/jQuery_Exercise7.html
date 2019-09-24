@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("body").bind('cut copy paste', function(a){//here this is a callback function...when any of the functionality among 'cut','copy','paste' occur..this callback function gets called...
+                alert("Very Smart, you can cut copy paste man!")
+                a.preventDefault();//Here 'preventDefault' is used to prevent the default activity.....
+            })
+            //here by usnig "bind" we are just binding the functionality 'cut copy paste'....here bind is not a event...and here 'e' is an arbitrary parameter.. 
+            $("body").on("contextmenu",function(){
+                alert("Very Smart, You can't right click")
+                return false;
+            })
+            // Here meaning of "contextmenu" is 'Right Click' and here 'on' is a kind of event
+        })
+
+        </script>
+    </head>
+    <body>
+        <p>Click On Me</p>
+    </body>
+</html>

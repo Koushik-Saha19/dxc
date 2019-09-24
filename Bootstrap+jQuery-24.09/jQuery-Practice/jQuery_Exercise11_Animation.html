@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("div").animate({
+                    left:'250px',
+                    opacity:'0.5',
+                    height:'150px',
+                    width:'150px',
+                });
+            })
+        })
+        </script>
+    </head>
+    <body>
+        <button>Go</button>
+        <div style="background: pink; height: 100px; width:100px; position:absolute"></div>
+    </body>
+</html>
