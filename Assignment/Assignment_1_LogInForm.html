@@ -1,61 +1,67 @@
 <!Doctype html>
 
 <head>
-    
+
     <title>Customer Form</title>
-    
+
 </head>
+
 <body>
-    <h2><center>LOGIN FORM</center></h2>
-    <form action="success.html"><center>
-    
+    <h2>
+        <center>LOGIN FORM</center>
+    </h2>
+    <form action="success.html">
+        <center>
 
-    
-        UserName: <input type="text" name="userName"id="userName"/><span id="errorMessageNumber1"></span>
-        <br/>
-        <br/>
-        Password: <input type="text" name="password"id="password"/><span id="errorMessageNumber2"></span>
-        <br/>
-        <br/>
-        <input type="submit" value="Login">
-        <input type="button" value="Check"onclick="check()">
-        <input type="reset" value="clear">
 
-        <!-- <div id="userNamePassword"></div>
+
+            UserName: <input type="text" name="userName" id="userName" /><span id="errorMessageNumber1"></span>
+            <br />
+            <br />
+            Password: <input type="text" name="password" id="password" /><span id="errorMessageNumber2"></span>
+            <br />
+            <br />
+            <input type="submit" value="Login">
+            <input type="button" value="Check" onclick="check()">
+            <input type="reset" value="clear">
+
+            <!-- <div id="userNamePassword"></div>
         <div id="userName"></div>
         <div id="password"></div> -->
 
 
-</center></form>
+        </center>
+    </form>
 
-<script type="text/javascript">
-    
-    var userName1= document.getElementById("userName");
-    var password1= document.getElementById("password");
-    var errorMessageNumber1= document.getElementById("errorMessageNumber1");
-    var errorMessageNumber2= document.getElementById("errorMessageNumber2");
+    <script type="text/javascript">
 
 
-    function check(){
-        if(userName1.length == 0 && password1.length == 0){
-         errorMessageNumber1.innerHTML = "<font color=red>Username is mandatory</font>" 
-         errorMessageNumber2.innerHTML = "<font color=red>Password is mandatory</font>"
+        function check() {
+
+            var userName1 = document.getElementById("userName").value;
+            var password1 = document.getElementById("password").value;
+            var errorMessageNumber1 = document.getElementById("errorMessageNumber1");
+            var errorMessageNumber2 = document.getElementById("errorMessageNumber2");
+
+            errorMessageNumber1.innerHTML = ""
+            errorMessageNumber2.innerHTML = ""
+            
+            if (userName1.length == 0) {
+                errorMessageNumber1.innerHTML = "<font color=red>Username is mandatory</font>"
+            }
+            if (password1.length == 0) {
+                errorMessageNumber2.innerHTML = "<font color=red>Password is mandatory</font>"
+            }else 
+            if (password1.length < 6 || password1.length > 12 || password1.charAt(0) != "A") {
+                alert("Please maintain your password specification")
+            }
         }
-       if(userName1.length==0){
-        errorMessageNumber1.innerHTML="<font color=red>Username is mandatory</font>"
-        alert("Username is mandatory")
-    }
-      if(password1.length==0){
-        errorMessageNumber2.innerHTML="<font color=red>Password is mandatory</font>"
-        alert("Password is mandatory")
-    }
-    }
-    if(password1.length < 6 || password1.length > 12 || password1.charAt(0)!="A"){
-        alert("Please maintain your password specification")
-    }
     </script>
 
- <a href="RegistrationForm.html"><center>Register</center></a>
+    <a href="RegistrationForm.html">
+        <center>Register</center>
+    </a>
 
 </body>
+
 </html>
