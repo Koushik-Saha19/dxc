@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <script>
+        function myFunction() {
+            var userName = document.getElementById("nameId").value;
+            var pricing = document.getElementById("priceId").value;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = userName;
+            cell2.innerHTML = pricing;
+        }
+        function addTable() {
+            var userName = document.getElementById("nameId").value;
+            var pricing = document.getElementById("priceId").value;
+            var divSpace = document.getElementById("myDiv");
+            //var newTable = document.createElement('table');
+            //newTable.setAttribute('id', 'table1');
+            var table = document.getElementById("oldTable");
+            var newRow = document.createElement('tr');
+            newRow.setAttribute('id', 'row1');
+            var newData1 = document.createElement('td');
+            newData1.setAttribute('id', 'data1');
+            var newData2 = document.createElement('td');
+            newData1.setAttribute('id', 'data2');
+           // newData1.appendChild(userName);
+           // newData2.appendChild(pricing);
+           newData1.innerHTML = userName
+           newData2.innerHTML = pricing
+            newRow.appendChild(newData1);
+            newRow.appendChild(newData2);
+            table.appendChild(newRow);
+           // divSpace.appendChild(newTable);
+        }
+    </script>
+</head>
+
+<body>
+    <h1 align="center">Cart</h1>
+
+    <table cellpadding="10" cellspacing="10">
+        <tr>
+            <td>
+                Name:
+            </td>
+            <td>
+                <input type="text" id="nameId">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price:
+            </td>
+            <td>
+                <input type="text" id="priceId">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="Add" onclick="addTable()">Add</button>
+                <button onclick="myFunction()">Add Values in the below table</button>
+            </td>
+        </tr>
+    </table>
+    <div id="myDiv">
+
+    </div>
+    <table id="oldTable" cellspacing="10" cellpadding="10" border="10">
+        <th>Name</th>
+        <th>Price</th>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+
+    <table id="myTable" border="10">
+       
+    </table>
+    <br>
+
+
+</body>
+
+</html>
