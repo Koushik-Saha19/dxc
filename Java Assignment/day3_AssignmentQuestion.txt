@@ -1,0 +1,32 @@
+1) Create a java program to store five products.
+
+Prompt user to enter product id ,product name, quantity and price.
+
+a) Please make sure product id , quantity and price are not negative.
+
+Output : 
+These are the product entered by you :
+
+Product [productId=10019, productName=Lakme, quantityOnhand=100, price=10]
+
+Product [productId=10020, productName=Lakme, quantityOnhand=100, price=10]
+
+Product [productId=10019, productName=Lakme, quantityOnhand=100, price=10]
+
+Product [productId=10019, productName=Lakme, quantityOnhand=100, price=10]
+
+Product [productId=10019, productName=Lakme, quantityOnhand=100, price=10]
+
+2) Create a program and hard code five products in an array.
+
+a) Ask the user to enter the product id and print the details of the product.
+
+Output :
+Enter product id to search : 10019
+Product [productId=10019, productName=Lakme, quantityOnhand=100, price=10]
+
+or else
+
+Enter product id : 100222
+
+Product Id does not exist.
