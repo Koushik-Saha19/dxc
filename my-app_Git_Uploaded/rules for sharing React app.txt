@@ -1,0 +1,13 @@
+   
+
+   When you want to share your react app/projetc or with anyone or if you want to uplaod your app/project in Git-Hub.....
+
+   then you should share/upload only this 3 folder/file-----
+
+                                                     1. Public
+                                                     2. src
+                                                     3. JSON file
+
+  in the system where you are sharing this app/project...here after importing this project....you must have to install all the nodes modules....
+
+  Just give the command "npm install" in the Terminal of VS-Code....
