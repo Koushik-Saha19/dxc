@@ -1,5 +1,5 @@
 import React from 'react';
-//import './App.css';
+import './App.css';
 // import Welcome from './components/Welcome'
 //import ClassDemo1 from './components/ClassDemo1'
 //import Like from './components/IIFE_Demo'
@@ -17,11 +17,17 @@ import React from 'react';
 
 //import PARENTcomponent from './components/ParentComponent';
 import 'bootstrap/dist/css/bootstrap.css'
-import CommentingApp2 from './components/CommentingApp2';
+import App1 from './RoutingDemo/App1';
+//import CommentingApp2 from './components/CommentingApp2';
+//import CommentingApp from './components/CommentingApp';
+//import This_Structuring from './components/this_Structuring';
 //import FormDemo1 from './components/formDemo1';
 // import FormDemo2 from './components/formDemo2';
 // import TodoApp from './components/ToDoApp';
 //import CommentingApp from './components/CommentingApp'
+//import LogInValidation from './components/LogInValidation'
+//import CompleteFormValidation from './components/CreateAccountForm'
+//import MapFunctionDemo1 from './components/mapFunctionDemo1'
 
 function App() {
   return (
@@ -48,7 +54,12 @@ function App() {
      {/* <TodoApp></TodoApp> */}
      
      {/* <CommentingApp></CommentingApp> */}
-     <CommentingApp2></CommentingApp2>
+     {/* <CommentingApp2></CommentingApp2> */}
+     {/* <This_Structuring uname="Jak"></This_Structuring> */}
+     {/* <LogInValidation></LogInValidation> */}
+     {/* <CompleteFormValidation></CompleteFormValidation> */}
+     {/* <MapFunctionDemo1></MapFunctionDemo1> */}
+     
     </div>
   );
 }
