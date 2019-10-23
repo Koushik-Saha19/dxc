@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import './App.css'
 
+
 class App extends PureComponent {
     constructor(props) {
         super(props)
@@ -13,12 +14,13 @@ class App extends PureComponent {
     render() {
         return (
             <div className="div">
-            <h1>Customer Details</h1>
+            <h1>Welcome</h1>
             <a href="/">Home | </a>
-            
             <a href="/Employee">Employee | </a>
-            <a href="/Customer">Customer | </a>
+            {/* <a href="/Customer">Customer | </a> */}
             <a href="/Product">Product | </a>
+            <a href="/Component">Customer Details</a>
+
         </div>
         )
     }

@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+
 
 class Product extends Component {
     constructor(props) {
@@ -11,11 +13,15 @@ class Product extends Component {
 
     render() {
         return (
+           
             <div>
-                <h1>
-                    Product Component
-                </h1>
+                <h2>
+                    
+                    <a href="/ProductDetails">ProductDetails</a>
+                   
+                </h2>
             </div>
+            
         )
     }
 }

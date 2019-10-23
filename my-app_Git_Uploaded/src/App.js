@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+
 // import Welcome from './components/Welcome'
 //import ClassDemo1 from './components/ClassDemo1'
 //import Like from './components/IIFE_Demo'
@@ -16,8 +17,8 @@ import './App.css';
 // import ConditionalRenderingDemo5 from './components/ConditionalRenderingDemo5';
 
 //import PARENTcomponent from './components/ParentComponent';
-import 'bootstrap/dist/css/bootstrap.css'
-import App1 from './RoutingDemo/App1';
+// import 'bootstrap/dist/css/bootstrap.css'
+
 //import CommentingApp2 from './components/CommentingApp2';
 //import CommentingApp from './components/CommentingApp';
 //import This_Structuring from './components/this_Structuring';
@@ -27,7 +28,13 @@ import App1 from './RoutingDemo/App1';
 //import CommentingApp from './components/CommentingApp'
 //import LogInValidation from './components/LogInValidation'
 //import CompleteFormValidation from './components/CreateAccountForm'
-//import MapFunctionDemo1 from './components/mapFunctionDemo1'
+//import ProductFunctionDemo1 from './components/ProductFunctionDemo1'
+//import AjaxDemo1 from './ajaxDemo/AjaxDemo1'
+// import BoxAddition from './ReactAssignment/BoxAddition';
+// import AgeFinder from './Age_Calculator_UsingDOB/AgeFinder'
+import Calculator from './calculatorApp2/Calculator'
+
+
 
 function App() {
   return (
@@ -58,8 +65,12 @@ function App() {
      {/* <This_Structuring uname="Jak"></This_Structuring> */}
      {/* <LogInValidation></LogInValidation> */}
      {/* <CompleteFormValidation></CompleteFormValidation> */}
-     {/* <MapFunctionDemo1></MapFunctionDemo1> */}
-     
+     {/* <ProductFunctionDemo1></ProductFunctionDemo1> */}
+     {/* <AjaxDemo1></AjaxDemo1> */}
+     {/* <BoxAddition></BoxAddition> */}
+      {/* <AgeFinder></AgeFinder> */}
+       <Calculator></Calculator>
+
     </div>
   );
 }
