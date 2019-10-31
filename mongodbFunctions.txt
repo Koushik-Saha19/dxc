@@ -1,0 +1,1665 @@
+db
+dxcdb
+> use dxcdb
+switched to db dxcdb
+> show db
+2019-10-29T10:49:20.318+0530 E  QUERY    [js] uncaught exception: Error: don't know how to show [db] :
+shellHelper.show@src/mongo/shell/utils.js:1139:11
+shellHelper@src/mongo/shell/utils.js:790:15
+@(shellhelp2):1:1
+> show dbs
+admin   0.000GB
+config  0.000GB
+itemdb  0.000GB
+local   0.000GB
+> show databases
+admin   0.000GB
+config  0.000GB
+itemdb  0.000GB
+local   0.000GB
+> db
+dxcdb
+> db
+dxcdb
+> use dxcdb
+switched to db dxcdb
+> show dbs
+admin   0.000GB
+config  0.000GB
+itemdb  0.000GB
+local   0.000GB
+> db.product.insert({"productId":1010, "productName":Lakme });
+2019-10-29T11:23:35.528+0530 E  QUERY    [js] uncaught exception: ReferenceError: Lakme is not defined :
+@(shell):1:38
+> db.product.insert({"productId": 1010, "productName":"Lakme"});
+WriteResult({ "nInserted" : 1 })
+> db.product.insert({"productId": 1012, "productName":"Garnier"});
+WriteResult({ "nInserted" : 1 })
+> db.product.find();
+{ "_id" : ObjectId("5db7d424719ca27259d2629c"), "productId" : 1010, "productName" : "Lakme" }
+{ "_id" : ObjectId("5db7d458719ca27259d2629d"), "productId" : 1012, "productName" : "Garnier" }
+> db.product.count();
+2
+> var data={}
+> data.name="Cognizant"
+Cognizant
+> data.status = "CMMIlevel 5 Company"
+CMMIlevel 5 Company
+> data.empName=["Joe","Jason","Eoin","Ben"]
+[ "Joe", "Jason", "Eoin", "Ben" ]
+> data.videos = {}
+{ }
+> data.videos.department="Operations"
+Operations
+> data.videos.projects="HR"
+HR
+> db.info.save(data);
+WriteResult({ "nInserted" : 1 })
+> db.info.find();
+{ "_id" : ObjectId("5db7d647719ca27259d2629e"), "name" : "Cognizant", "status" : "CMMIlevel 5 Company", "empName" : [ "Joe", "Jason", "Eoin", "Ben" ], "videos" : { "department" : "Operations", "projects" : "HR" } }
+> db.info.pretty()
+2019-10-29T11:35:33.563+0530 E  QUERY    [js] uncaught exception: TypeError: db.info.pretty is not a function :
+@(shell):1:1
+> db.info.find().pretty()
+{
+        "_id" : ObjectId("5db7d647719ca27259d2629e"),
+        "name" : "Cognizant",
+        "status" : "CMMIlevel 5 Company",
+        "empName" : [
+                "Joe",
+                "Jason",
+                "Eoin",
+                "Ben"
+        ],
+        "videos" : {
+                "department" : "Operations",
+                "projects" : "HR"
+        }
+}
+> db.product.insert({"productId": 1012, "productName":"Garnier","quantityOnHand":900,"price":175});
+WriteResult({ "nInserted" : 1 })
+> db.product.insert({"productId": 1016, "productName":"Dove","quantityOnHand":450,"price"455});
+2019-10-29T11:41:54.889+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:87
+> db.product.insert({"productId": 1016, "productName":"Dove","quantityOnHand":450,"price":455});
+WriteResult({ "nInserted" : 1 })
+> db.product.find().forEach(printjson)
+{
+        "_id" : ObjectId("5db7d424719ca27259d2629c"),
+        "productId" : 1010,
+        "productName" : "Lakme"
+}
+{
+        "_id" : ObjectId("5db7d458719ca27259d2629d"),
+        "productId" : 1012,
+        "productName" : "Garnier"
+}
+{
+        "_id" : ObjectId("5db7d7b0719ca27259d2629f"),
+        "productId" : 1014,
+        "productName" : "Nieva",
+        "quantityOnHand" : 900,
+        "price" : 175
+}
+{
+        "_id" : ObjectId("5db7d838719ca27259d262a0"),
+        "productId" : 1016,
+        "productName" : "Dove",
+        "quantityOnHand" : 450,
+        "price" : 455
+}
+> db.createCollection('Customers')
+{ "ok" : 1 }
+> db.Customers.insert({"customerId":1009,"customerName":'Neha'});
+WriteResult({ "nInserted" : 1 })
+> db.Customers.insert([{"customerId":1009,"customerName":'Neha'},{customerId: 1010, "customerName":'Jason Roy',"email":'jason@abc.com'}]);
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.Customers.find().pretty()
+{
+        "_id" : ObjectId("5db7da32719ca27259d262a1"),
+        "customerId" : 1009,
+        "customerName" : "Neha"
+}
+{
+        "_id" : ObjectId("5db7db38719ca27259d262a2"),
+        "customerId" : 1009,
+        "customerName" : "Neha"
+}
+{
+        "_id" : ObjectId("5db7db38719ca27259d262a3"),
+        "customerId" : 1010,
+        "customerName" : "Jason Roy",
+        "email" : "jason@abc.com"
+}
+>db.Customers.drop()
+>true
+> db.customers.insert([
+...     {
+...         customerName: "Mohan",
+...         customerId : 8000,
+...         emailId : "mohan@gmail.com",
+...         bilAmount : 9800,
+...         address : {
+...             street : "89, BTM Layout",
+...             city : "Bangalore",
+...             state : "Karnataka",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 78000.67
+...     },
+...     {
+...         customerName: "Lait",
+...         customerId : 9000,
+...         emailId : "lalit@gmail.com",
+...         bilAmount : 1200,
+...         address : {
+...             street : "11, Virandavan",
+...             city : "Mathura",
+...             state : "UttarPradesh",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 6700.67
+...     },
+...     {
+...         customerName: "Kalpana",
+...         customerId : 9001,
+...         emailId : "kalpana@gmail.com",
+...         bilAmount : 3000,
+...         address : {
+...             street : "77, Near Sikandra",
+...             city : "Agra",
+...             state : "Uttar Pradesh",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 98000.62
+...     },
+...     {
+...         customerName: "Rekha",
+...         customerId : 6543,
+...         emailId : "rekha@gmail.com",
+...         bilAmount : 2300,
+...         address : {
+...             street : "12, Near Chowki",
+...             city : "Balli Maran",
+...             state : "Delhi",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 18000.22
+...     },
+...     {
+...         customerName: "Mohit",
+...         customerId : 3400,
+...         emailId : "mohit@gmail.com",
+...         bilAmount : 99,
+...         address : {
+...             street : "22, Opp Dairy",
+...             city : "Mumbai",
+...             state : "Maharashtra",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 1000
+...     }
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 5,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.customers.find({"customerName": "Kalpana"})
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a6"), "customerName" : "Kalpana", "customerId" : 9001, "emailId" : "kalpana@gmail.com", "bilAmount" : 3000, "address" : { "street" : "77, Near Sikandra", "city" : "Agra", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 98000.62 }
+> db.customers.find({"customerName": "Kalpana"}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+> db.customers.find({"state": "Uttar Pradesh"})
+> db.customers.find({"address.state": "Uttar Pradesh"})
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a6"), "customerName" : "Kalpana", "customerId" : 9001, "emailId" : "kalpana@gmail.com", "bilAmount" : 3000, "address" : { "street" : "77, Near Sikandra", "city" : "Agra", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 98000.62 }
+> db.customers.find({"address.state": "Uttar Pradesh"}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+> db.customers.find({"address.state": "Uttar Pradesh"}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a5"),
+        "customerName" : "Lait",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "bilAmount" : 1200,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+> db.customers.find({customerName: "Kalpana"}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+> db.customers.find({$or : [{"customerName":"Kalpana"} ,{"customerName":"Mohit"}]})
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a6"), "customerName" : "Kalpana", "customerId" : 9001, "emailId" : "kalpana@gmail.com", "bilAmount" : 3000, "address" : { "street" : "77, Near Sikandra", "city" : "Agra", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 98000.62 }
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a8"), "customerName" : "Mohit", "customerId" : 3400, "emailId" : "mohit@gmail.com", "bilAmount" : 99, "address" : { "street" : "22, Opp Dairy", "city" : "Mumbai", "state" : "Maharashtra" }, "memberships" : [ "premium", "normal" ], "balance" : 1000 }
+>
+>
+>
+> db.customers.find({$or : [{"customerName":"Kalpana"} ,{"customerName":"Mohit"}]}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a8"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "bilAmount" : 99,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 1000
+}
+>
+>
+>
+> db.customers.find({$or : [{"address.city":"Agra"},{"address.city":"Mumbai"}]})
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a6"), "customerName" : "Kalpana", "customerId" : 9001, "emailId" : "kalpana@gmail.com", "bilAmount" : 3000, "address" : { "street" : "77, Near Sikandra", "city" : "Agra", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 98000.62 }
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a8"), "customerName" : "Mohit", "customerId" : 3400, "emailId" : "mohit@gmail.com", "bilAmount" : 99, "address" : { "street" : "22, Opp Dairy", "city" : "Mumbai", "state" : "Maharashtra" }, "memberships" : [ "premium", "normal" ], "balance" : 1000 }
+> db.customers.find({$or : [{"address.city":"Agra"},{"address.city":"Mumbai"}]}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a8"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "bilAmount" : 99,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 1000
+}
+> db.customers.find({balance: {$gt: 5000}})
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a4"), "customerName" : "Mohan", "customerId" : 8000, "emailId" : "mohan@gmail.com", "bilAmount" : 9800, "address" : { "street" : "89, BTM Layout", "city" : "Bangalore", "state" : "Karnataka" }, "memberships" : [ "premium", "normal" ], "balance" : 78000.67 }
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a5"), "customerName" : "Lait", "customerId" : 9000, "emailId" : "lalit@gmail.com", "bilAmount" : 1200, "address" : { "street" : "11, Virandavan", "city" : "Mathura", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 6700.67 }
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a6"), "customerName" : "Kalpana", "customerId" : 9001, "emailId" : "kalpana@gmail.com", "bilAmount" : 3000, "address" : { "street" : "77, Near Sikandra", "city" : "Agra", "state" : "Uttar Pradesh" }, "memberships" : [ "premium", "normal" ], "balance" : 98000.62 }
+{ "_id" : ObjectId("5db7dcd3719ca27259d262a7"), "customerName" : "Rekha", "customerId" : 6543, "emailId" : "rekha@gmail.com", "bilAmount" : 2300, "address" : { "street" : "12, Near Chowki", "city" : "Balli Maran", "state" : "Delhi" }, "memberships" : [ "premium", "normal" ], "balance" : 18000.22 }
+> db.customers.find({balance: {$gt: 5000}}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a4"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "bilAmount" : 9800,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a5"),
+        "customerName" : "Lait",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "bilAmount" : 1200,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a6"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a7"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "bilAmount" : 2300,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22
+}
+> db.customers.find({balance: {$lt: 5000}}).pretty()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a8"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "bilAmount" : 99,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 1000
+}
+> db.customers.find({membership:"premium"}).count()
+0
+> db.customers.find({memberships:"premium"}).count()
+5
+> db.customers.findOne()
+{
+        "_id" : ObjectId("5db7dcd3719ca27259d262a4"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "bilAmount" : 9800,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67
+}
+> db.customers.find().forEach(function(data) { print("Customer Name: " + data.customerName)});
+Customer Name: Mohan
+Customer Name: Lait
+Customer Name: Kalpana
+Customer Name: Rekha
+Customer Name: Mohit
+
+----------------------------------------------------------------------here we are from customers collection to 'newcustomers' collection....
+
+> db.newcustomers.insert([
+...     {
+...         customerName: "Mohan",
+...         customerId : 8000,
+...         emailId : "mohan@gmail.com",
+...         bilAmount : 9800,
+...         gender : 'male',
+...         age : 23,
+...         address : {
+...             street : "89, BTM Layout",
+...             city : "Bangalore",
+...             state : "Karnataka",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 78000.67
+...     },
+...     {
+...         customerName: "Lalit",
+...         customerId : 9000,
+...         emailId : "lalit@gmail.com",
+...         bilAmount : 1200,
+...         gender : 'male',
+...         age : 29,
+...         address : {
+...             street : "11, Virandavan",
+...             city : "Mathura",
+...             state : "UttarPradesh",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 6700.67
+...     },
+...     {
+...         customerName: "Kalpana",
+...         customerId : 9001,
+...         emailId : "kalpana@gmail.com",
+...         bilAmount : 3000,
+...         gender : 'female',
+...         age : 22,
+...         address : {
+...             street : "77, Near Sikandra",
+...             city : "Agra",
+...             state : "Uttar Pradesh",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 98000.62
+...     },
+...     {
+...         customerName: "Rekha",
+...         customerId : 6543,
+...         emailId : "rekha@gmail.com",
+...         bilAmount : 2300,
+...         gender : 'female',
+...         age : 34,
+...         address : {
+...             street : "12, Near Chowki",
+...             city : "Balli Maran",
+...             state : "Delhi",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 18000.22
+...     },
+...     {
+...         customerName: "Mohit",
+...         customerId : 3400,
+...         emailId : "mohit@gmail.com",
+...         bilAmount : 99,
+...         gender : 'male',
+...         age : 45,
+...         address : {
+...             street : "22, Opp Dairy",
+...             city : "Mumbai",
+...             state : "Maharashtra",
+...         },
+...         memberships: ["premium", "normal"],
+...         balance : 1000
+...     }
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 5,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.newcustomers.aggregate([{$group: {_id:"$gender",OurCustomResult: {$max:"$age"}}}])
+{ "_id" : "male", "OurCustomResult" : 45 }
+{ "_id" : "female", "OurCustomResult" : 34 }
+> db.newcustomers.aggregate([{$group: {_id:"$gender",OurCustomResult: {$min:"$age"}}}])
+{ "_id" : "male", "OurCustomResult" : 23 }
+{ "_id" : "female", "OurCustomResult" : 22 }
+> db.newcustomers.aggregate([{$group: {_id:"$gender",OurCustomResult: {$max:"$balance"}}}])
+{ "_id" : "female", "OurCustomResult" : 98000.62 }
+{ "_id" : "male", "OurCustomResult" : 78000.67 }
+> db.newcustomers.aggregate([{$group: {_id:"$gender",OurCustomResult: {$min:"$balance"}}}])
+{ "_id" : "male", "OurCustomResult" : 1000 }
+{ "_id" : "female", "OurCustomResult" : 18000.22 }
+> db.newcustomers.aggregate([{$group: {_id:"$address.city",OurCustomResult: {$sum:1}}}])
+{ "_id" : "Balli Maran", "OurCustomResult" : 1 }
+{ "_id" : "Bangalore", "OurCustomResult" : 1 }
+{ "_id" : "Agra", "OurCustomResult" : 1 }
+{ "_id" : "Mumbai", "OurCustomResult" : 1 }
+{ "_id" : "Mathura", "OurCustomResult" : 1 }
+--------------------------------------------------------------writing script file in MongodbDemos folder and running it in cmd to connect with particular db
+
+> load('FirstScript.js')
+true
+> selectDB()
+connecting to: mongodb://localhost:27017/dxcdb
+Implicit session: session { "id" : UUID("1797f78f-135c-4368-bfc3-00a58028abf0") }
+MongoDB server version: 4.2.1
+dxcdb
+> load('FirstScript.js')
+true
+> selectDB(27017,"itemdb")
+connecting to: mongodb://localhost:27017/itemdb
+Implicit session: session { "id" : UUID("b469f773-49ed-4fba-8add-7620ea4ee62f") }
+MongoDB server version: 4.2.1
+itemdb
+
+-----------------------------------------here we are replacing our previous 'customers' collection by a new 'customers' collection........
+>db.customers.insert([
+... {
+...  "_id" : ObjectId("57b68dbbc19c0bd86d62e486"),
+...  "empId" : "1",
+...  "type" : "WebUser",
+...  "city" : "Pune"
+... },
+... {
+...  "_id" : ObjectId("57b68dbbc19c0bd86d62e487"),
+...  "empId" : "2",
+...  "type" : "Admin",
+...  "city" : "Mumbai"
+... },
+... {
+...  "_id" : ObjectId("57b68dbbc19c0bd86d62e488"),
+...  "empId" : "3",
+...  "type" : "Admin",
+...  "city" : "Pune"
+... },
+... {
+...  "_id" : ObjectId("57b68dbbc19c0bd86d62e489"),
+...  "empId" : "4",
+...  "type" : "User",
+...  "city" : "Mumbai"
+... }
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 4,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+dxcdb 7>db.customers.find({$and : [{"type":"WebUser"},{"city":"Pune"}]}).pretty()
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e486"),
+        "empId" : "1",
+        "type" : "WebUser",
+        "city" : "Pune"
+}
+dxcdb 8>db.customers.find({}).pretty()
+{
+        "_id" : ObjectId("5db81a441752f7426c6f8e66"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "bilAmount" : 9800,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67
+}
+{
+        "_id" : ObjectId("5db81a441752f7426c6f8e67"),
+        "customerName" : "Lait",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "bilAmount" : 1200,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "UttarPradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67
+}
+{
+        "_id" : ObjectId("5db81a441752f7426c6f8e68"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "bilAmount" : 3000,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62
+}
+{
+        "_id" : ObjectId("5db81a441752f7426c6f8e69"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "bilAmount" : 2300,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22
+}
+{
+        "_id" : ObjectId("5db81a441752f7426c6f8e6a"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "bilAmount" : 99,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 1000
+}
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e486"),
+        "empId" : "1",
+        "type" : "WebUser",
+        "city" : "Pune"
+}
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e487"),
+        "empId" : "2",
+        "type" : "Admin",
+        "city" : "Mumbai"
+}
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e488"),
+        "empId" : "3",
+        "type" : "Admin",
+        "city" : "Pune"
+}
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e489"),
+        "empId" : "4",
+        "type" : "User",
+        "city" : "Mumbai"
+}
+dxcdb 13>db.customers.find({$or:[{$and:[{"type":"WebUser"},{"city":"Pune"}]},{$and:[{"type":"User"},{"city":"Mumbai"}]}]}).pretty()
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e486"),
+        "empId" : "1",
+        "type" : "WebUser",
+        "city" : "Pune"
+}
+{
+        "_id" : ObjectId("57b68dbbc19c0bd86d62e489"),
+        "empId" : "4",
+        "type" : "User",
+        "city" : "Mumbai"
+}
+dxcdb 14>db.product.update({"productId":1012},{$set: {"price":100}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+---------------The above updated our particular product having productId: 1012.......here if we don't use "set" then it will remove all the attributes of that product,and only price will be there...
+dxcdb 15>db.newcustomers.update({"customerName":"Mohan"},{$set: {"age":24,"billAmount":10200}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+.........................The above command also updated particular data of customerName: Mohan....................
+dxcdb 17>use mytemp
+switched to db mytemp
+mytemp 20>for(i=0; i<1000000;i++){ db.mydatas.insert({"Emp Id": i,"EmpName" : "Joe Root"})}
+WriteResult({ "nInserted" : 1 })........here it will take some time to create this 10 milion data...
+
+-----------------it will create 10000000 data.....in our mongodb with name 'mytemp'...within it there will be collection name 'mydatas'----------
+
+
+
+dxcdb 21>db.product.update({"productId":1010},{$set: {"quantityOnHand": 100}},{upsert:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+dxcdb 22>db.newcustomers.update({},{$rename: {"bilAmount":"billAmt"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+db.newcustomers.updateMany({},{$rename: {"bilAmount":"billAmt"}})___________this will rename 'billAmount' of all the customers to 'billAmt'
+
+dxcdb 23>db.newcustomers.update({"customerName":"Kalpana"},{$set: {"spouse":"Sneha"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+dxcdb 24>db.newcustomers.update({"customerName":"Divakar"},{$set: {"childName":"Tillu"}},true,true)----this command will at first search the name "Divakar"..if it is there then it will add the 'childname'.....if "Divakar" is not there then it will create the data "Divakar"..then it will add " childname"..the first true does the making new "Divakar" customer...and the 2nd "true" work for 'multiple'...i.e if there is more than one customer named as "Divakar"....then it will add "childname" in all the "Divakar"
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : ObjectId("5db930623cc3c5f8585e65a8")
+})
+dxcdv 24> db.student.insert([{"_id":1,"grades":[85,80,90]},{"_id":2,"grades":[88,90,92]},{"_id":3,"grades":[85,100,90]}])
+BulkWriteResult({nt.insert([{"_id":1,"grades":[85,80,90]},{"_id":2,"grades":[88,90,92]},{"_id":3,"grades":[85,100,90]}])
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+----------------here we have created a student collection
+dxcdb 25>db.student.update({_id:1, grades: 80},{$set:{"grades.$":82}},false,true)
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+---------------here we are updating the values of student having id:1...here '$." is positional operator...if we don't use it..it will remove all the marks in that array..only '82' will be there...and if we use it ...it will search that particular mark in that array..of id:1
+dxcdb 24>db.student.insert({
+...   _id: 5,
+...   grades: [
+...      { grade: 80, mean: 75, std: 8 },
+...      { grade: 85, mean: 90, std: 5 },
+...      { grade: 90, mean: 85, std: 3 }
+...   ]
+... })
+WriteResult({ "nInserted" : 1 })
+dxcdb 25>db.student.updateOne(
+... {
+... _id:5,
+... grades:{$elemMatch:{grade:{$lte :90},mean:{$gt:80}}}
+... },
+... {$set:{"grades.$.std":6}}
+... )
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+dxcdb 26>db.newcustomers.find({customerName: /a/}).pretty()...............it will find all the name has 'a' character
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e61"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "gender" : "male",
+        "age" : 24,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67,
+        "billAmt" : 9800
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e62"),
+        "customerName" : "Lalit",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "gender" : "male",
+        "age" : 29,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "UttarPradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67,
+        "billAmt" : 1200
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e64"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "gender" : "female",
+        "age" : 34,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22,
+        "billAmt" : 2300
+}
+{
+        "_id" : ObjectId("5db930623cc3c5f8585e65a8"),
+        "customerName" : "Divakar",
+        "childName" : "Tillu"
+}
+dxcdb 31>db.newcustomers.find({customerName: /a$/}).pretty().............it will find all the name ending with 'a'...here '$' sign is important
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e64"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "gender" : "female",
+        "age" : 34,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22,
+        "billAmt" : 2300
+}
+dxcdb 33>db.newcustomers.find({customerName: /^K/}).pretty()...........it will find the names starting with 'K'
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000
+}
+
+
+Regular expression:
+-----------------------------------------------
+dxcdb 34>db.newcustomers.find({customerName: {'$regex': 'Ka.p.na$'}}).pretty()....here it will check the name which have the pattern..."starting with "Ka" & in the middle "a"....it will end with "na"....in this way it can check any pattern......
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000
+}
+----------------------------------
+Projection:
+________________________
+
+dxcdb 70>db.newcustomers.find({customerName:"Mohit"},{"billAmt":1})
+{ "_id" : ObjectId("5db815b71752f7426c6f8e65"), "billAmt" : 99 }..................here "billAmt":1..by this only 'billAmt' of 'Mohit' will be printed
+"..............by this above command we are able to print 'billAmt' but with that "_id" is also printing....if we want to print only "billAmt" without "_id"..then use the following command...
+dxcdb 71>db.newcustomers.find({customerName:"Mohit"},{"billAmt":1,_id:0 }).pretty()
+{ "billAmt" : 99 }
+------------------------------------------
+dxcdb 72>db.newcustomers.find({customerName:"Mohit"},{"billAmt":0}).pretty()...........here "billAmt":0..by this all details except 'billAmt' of 'Mohit' will be printed........
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e65"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003
+} 
+dxcdb 73>db.newcustomers.find({customerName:"Mohit"}).pretty().........by this all about 'Mohit' will be printed.....
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e65"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003,
+        "billAmt" : 99
+}
+dxcdb 74>db.newcustomers.find({customerName:"Mohit"},{"billAmt":0,_id:0 }).pretty()............by this everything except "billAmt" and "_id" will be printed
+{
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003
+}
+--------------------------------------------------------------------------------------
+Printing details of customer in ascending order of age
+-------------------------------------------------------
+dxcdb 84>db.newcustomers.find().sort({age: 1}).pretty()
+{
+        "_id" : ObjectId("5db930623cc3c5f8585e65a8"),
+        "customerName" : "Divakar",
+        "childName" : "Tillu",
+        "age" : 21
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000,
+        "dob" : ISODate("2019-03-03T06:01:17.171Z")
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e61"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "gender" : "male",
+        "age" : 24,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67,
+        "billAmt" : 9800,
+        "dob" : ISODate("2019-02-02T06:01:17.171Z")
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e62"),
+        "customerName" : "Lalit",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "gender" : "male",
+        "age" : 29,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "UttarPradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67,
+        "billAmt" : 1200
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e64"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "gender" : "female",
+        "age" : 34,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22,
+        "billAmt" : 2300
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e65"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003,
+        "billAmt" : 99,
+        "dob" : ISODate("2019-01-01T06:01:17.171Z")
+}
+------------------------------------------------------------------------
+Printing of details in the descending order of age
+-------------------------------------------------
+dxcdb 92>db.newcustomers.find().sort({age: -1}).pretty()
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e65"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003,
+        "billAmt" : 99,
+        "dob" : ISODate("2019-01-01T06:01:17.171Z")
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e64"),
+        "customerName" : "Rekha",
+        "customerId" : 6543,
+        "emailId" : "rekha@gmail.com",
+        "gender" : "female",
+        "age" : 34,
+        "address" : {
+                "street" : "12, Near Chowki",
+                "city" : "Balli Maran",
+                "state" : "Delhi"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 18000.22,
+        "billAmt" : 2300
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e62"),
+        "customerName" : "Lalit",
+        "customerId" : 9000,
+        "emailId" : "lalit@gmail.com",
+        "gender" : "male",
+        "age" : 29,
+        "address" : {
+                "street" : "11, Virandavan",
+                "city" : "Mathura",
+                "state" : "UttarPradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 6700.67,
+        "billAmt" : 1200
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e61"),
+        "customerName" : "Mohan",
+        "customerId" : 8000,
+        "emailId" : "mohan@gmail.com",
+        "gender" : "male",
+        "age" : 24,
+        "address" : {
+                "street" : "89, BTM Layout",
+                "city" : "Bangalore",
+                "state" : "Karnataka"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 78000.67,
+        "billAmt" : 9800,
+        "dob" : ISODate("2019-02-02T06:01:17.171Z")
+}
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e63"),
+        "customerName" : "Kalpana",
+        "customerId" : 9001,
+        "emailId" : "kalpana@gmail.com",
+        "gender" : "female",
+        "age" : 22,
+        "address" : {
+                "street" : "77, Near Sikandra",
+                "city" : "Agra",
+                "state" : "Uttar Pradesh"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 98000.62,
+        "spouse" : "Sneha",
+        "billAmt" : 3000,
+        "dob" : ISODate("2019-03-03T06:01:17.171Z")
+}
+{
+        "_id" : ObjectId("5db930623cc3c5f8585e65a8"),
+        "customerName" : "Divakar",
+        "childName" : "Tillu",
+        "age" : 21
+}
+---------------------------------------------
+dxcdb 91>db.newcustomers.find().sort({age: -1}).limit(1).pretty()...........this will print the highest age.....
+{
+        "_id" : ObjectId("5db815b71752f7426c6f8e65"),
+        "customerName" : "Mohit",
+        "customerId" : 3400,
+        "emailId" : "mohit@gmail.com",
+        "gender" : "male",
+        "age" : 45,
+        "address" : {
+                "street" : "22, Opp Dairy",
+                "city" : "Mumbai",
+                "state" : "Maharashtra"
+        },
+        "memberships" : [
+                "premium",
+                "normal"
+        ],
+        "balance" : 5003,
+        "billAmt" : 99,
+        "dob" : ISODate("2019-01-01T06:01:17.171Z")
+}
+dxcdb 90>db.newcustomers.find().sort({age: 1}).limit(1).pretty().......this will print the lowest age.....
+{
+        "_id" : ObjectId("5db930623cc3c5f8585e65a8"),
+        "customerName" : "Divakar",
+        "childName" : "Tillu",
+        "age" : 21
+}
+-----------------------------------
+
+Indexing------
+
+
+dxcdb 95>use mytemp
+switched to db mytemp
+mytemp 96>db.mydatas.find({"Emp Id":78696})..............it will take minimum time of 6-7 seconds
+{ "_id" : ObjectId("5db924e4f020c70587a11a96"), "Emp Id" : 78696, "EmpName" : "Joe Root" }
+mytemp 97>db.mydatas.findOne({"Emp Id":78696})............it will be instant printing.....
+{
+        "_id" : ObjectId("5db924e4f020c70587a11a96"),
+        "Emp Id" : 78696,
+        "EmpName" : "Joe Root"
+}
+-------------------------------but here if we do indexing...then 'find'will also work as fast as 'findOne'......
+In the follwing way we can do indexing-----------
+mytemp 2>db.mydatas.ensureIndex({"Emp Id": 1})
+{
+        "numIndexesBefore" : 2,
+        "numIndexesAfter" : 2,
+        "note" : "all indexes already exist",
+        "ok" : 1
+}
+mytemp 3>db.mydatas.find({"Emp Id":564738})------------now here 'find' takes very very less time
+{ "_id" : ObjectId("5db9265ff020c70587a88530"), "Emp Id" : 564738, "EmpName" : "Joe Root" }
+
+--------------------In the follwing way we can get the indexes
+mytemp 5>db.mydatas.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_",
+                "ns" : "mytemp.mydatas"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "Emp Id" : 1
+                },
+                "name" : "Emp Id_1",
+                "ns" : "mytemp.mydatas"
+        }
+]
+------------------------in the following way we can drop the indexes..
+mytemp 7>db.mydatas.dropIndexes()
+{
+        "nIndexesWas" : 2,
+        "msg" : "non-_id indexes dropped for collection",
+        "ok" : 1
+}
+---------------------now 'find' will again take more time..bcz there is no indexing......
+dxcdb 17>db.product.update({},{$unset :{quantityOnHand:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 }).........it will remove the "quantityOnHand" from the first product "Lakme"
+-------------------------
+mytemp 67>db.test.createIndex({"flag":1},{partialFilterExpression: {flag:false}})-------this will index on the given filter and it will reduce the use of storage 
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+mytemp 68>db.test.stats().indexSizes
+{ "_id_" : 1232896, "flag_1" : 49152 }
+
+-------------------------------------------------------------
+For exporting
+-------------------------
+C:\Users\ksaha6\Desktop\Training\MongodbDemo>mongoexport -d itemdb -c todo -o allToDoItems.json
+2019-10-31T11:35:53.801+0530    connected to: mongodb://localhost/
+2019-10-31T11:35:53.819+0530    exported 15 records
+
+C:\Users\ksaha6\Desktop\Training\MongodbDemo>mongoexport -d dxcdb -c newcustomers -o newcustomers.CSV....it will not actually export data in CSV format
+2019-10-31T11:38:33.510+0530    connected to: mongodb://localhost/
+2019-10-31T11:38:33.528+0530    exported 6 records
+
+To export data in CSV format.............
+C:\Users\ksaha6\Desktop\Training\MongodbDemo>mongoexport -d dxcdb -c newcustomers --type CSV -f"customerName,emailId" -o"newcust.CSV"
+2019-10-31T11:43:20.095+0530    connected to: mongodb://localhost/
+2019-10-31T11:43:20.114+0530    exported 6 records
+
+--------------------------------------go to 'MongodbDemo' folder to find the files....
+For Importing
+--------------------------------------
+AS we have a collection in named 'newcustomers' in 'dxcdb'.....if we have any backup of this collection in json format....then at first drop/delete this 'newcustomers' collection....then import this from the backup....here u have to specify the name of the file and also give a name of collection where u want to import.....
+dxcdb 1>db.newcustomers.drop()
+true
+dxcdb 2>db.newcustomers.find()
+dxcdb 3>exit
+bye
+
+C:\Users\ksaha6\Desktop\Training\MongodbDemo>mongoimport -d dxcdb -c newcustomers --file newcustomers.json
+2019-10-31T11:56:30.672+0530    Failed: open newcustomers.json: The system cannot find the file specified.
+2019-10-31T11:56:30.677+0530    0 document(s) imported successfully. 0 document(s) failed to import.
+
+----------------now u can find'newcustomers' collection in 'dxcdb'.....
+---------------------------------------------------------------------------------------------------
+CONCEPT OF FOREIGN KEY:
+--------------------------------------
+dxcdb 2>db.CityMaster.insert([{"id":1, "cityname":"Gwalior"},{"id":2, "cityname":"Bhopal"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+dxcdb 5>db.Customer.insert([{"name":"Puneet","address":"England","CityId":db.CityMaster.find()[0].id},{"name":"Raj","address":"DD Nagar","CityId":db.CityMaster.find()[1].id},{"name":"Jhon","address":"Mp Nagar","CityId":db.CityMaster.find()[1].id},{"name":"Ankit","address":"Australia","CityId":db.CityMaster.find()[0].id}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 4,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+
+________________________________________________
+Concept of lookup:
+___________________________________________________________________________________________________________
+dxcdb 6>db.Customer.aggregate([{$lookup: {from:"CityMaster",localField:"CityId",foreignField:"id",as:"CityDetail"}},{$match: {details: {$ne: []}}}])
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e78"), "name" : "Puneet", "address" : "England", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e79"), "name" : "Raj", "address" : "DD Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7a"), "name" : "Jhon", "address" : "Mp Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7b"), "name" : "Ankit", "address" : "Australia", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+dxcdb 9>db.Customer.aggregate([{$lookup: {from:"CityMaster",localField:"CityId",foreignField:"id",as:"CityDetail"}},{$match: {name: {$ne:"Raj"}}}])
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e78"), "name" : "Puneet", "address" : "England", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7a"), "name" : "Jhon", "address" : "Mp Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7b"), "name" : "Ankit", "address" : "Australia", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+
+
+dxcdb 7>db.Customer.aggregate([{$lookup: {from:"CityMaster",localField:"CityId",foreignField:"id",as:"CityDetail"}}])
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e78"), "name" : "Puneet", "address" : "England", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e79"), "name" : "Raj", "address" : "DD Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7a"), "name" : "Jhon", "address" : "Mp Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7b"), "name" : "Ankit", "address" : "Australia", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+
+
+dxcdb 9>db.Customer.aggregate([{$lookup: {from:"CityMaster",localField:"CityId",foreignField:"id",as:"CityDetail"}},{$match: {name: {$ne:"Raj"}}}])
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e78"), "name" : "Puneet", "address" : "England", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7a"), "name" : "Jhon", "address" : "Mp Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e7b"), "name" : "Ankit", "address" : "Australia", "CityId" : 1, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e76"), "id" : 1, "cityname" : "Gwalior" } ] }
+
+
+dxcdb 10>db.Customer.aggregate([{$lookup: {from:"CityMaster",localField:"CityId",foreignField:"id",as:"CityDetail"}},{$match: {name: {$eq:"Raj"}}}])
+{ "_id" : ObjectId("5dba986112a32d9ca20b4e79"), "name" : "Raj", "address" : "DD Nagar", "CityId" : 2, "CityDetail" : [ { "_id" : ObjectId("5dba965d12a32d9ca20b4e77"), "id" : 2, "cityname" : "Bhopal" } ] }
+
+
+________________________________Another example of Foreign Key_________
+dxcdb 14>db.usersData.insert([
+...     {
+...   "_id": ObjectId("45b83bda421238c76f5c1969"),
+...   "name": "Tufail Ahmed",
+...   "email": "tufailahmedkhan@gmail.com",
+...   "country": "INDIA",
+...   "dob": ISODate("1999-09-13T00:00:00.000Z")
+...   }
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+dxcdb 15>db.usersPosts.insert([
+... {
+...   "user_id": ObjectId("45b83bda421238c76f5c1969"),
+...   "date": ISODate("2016-09-05T03:05:00.123Z"),
+...   "text": "Your bful eyes, I am in love all over again",
+...   "rating" : "important"
+... }
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+dxcdb 16>db.usersPosts.aggregate([
+...   { "$match": { "rating": "important" } },
+...   { "$sort": { "date": -1 } },
+...   { "$limit": 2 },
+...   { "$lookup": {
+...     "localField": "user_id",
+...     "from": "usersData",
+...     "foreignField": "_id",
+...     "as": "myinfo"
+...   } },
+...   { "$unwind": "$myinfo" },
+...   { "$project": {
+...     "text": 1,
+...     "date": 1,
+...     "myinfo.name": 1,
+...     "myinfo.country": 1
+...   } }
+... ]);
+{ "_id" : ObjectId("5dbaa5f412a32d9ca20b4e7c"), "date" : ISODate("2016-09-05T03:05:00.123Z"), "text" : "Your bful eyes, I am in love all over again", "myinfo" : { "name" : "Tufail Ahmed", "country" : "INDIA" } }
+
+___________________________________________________________________________
+Finding duplicate data in mongodb
+___________________________________
+dxcdb 30>db.banklist.aggregate([{$group: {_id:{CERT: "$CERT"}}}])
+{ "_id" : { "CERT" : 57110 } }
+{ "_id" : { "CERT" : 34738 } }
+{ "_id" : { "CERT" : 57835 } }
+{ "_id" : { "CERT" : 57440 } }
+{ "_id" : { "CERT" : 32571 } }
+{ "_id" : { "CERT" : 24660 } }
+{ "_id" : { "CERT" : 34601 } }
+{ "_id" : { "CERT" : 21521 } }
+{ "_id" : { "CERT" : 15640 } }
+{ "_id" : { "CERT" : 34658 } }
+{ "_id" : { "CERT" : 35353 } }
+{ "_id" : { "CERT" : 34943 } }
+{ "_id" : { "CERT" : 32423 } }
+{ "_id" : { "CERT" : 32575 } }
+{ "_id" : { "CERT" : 32288 } }
+{ "_id" : { "CERT" : 57151 } }
+{ "_id" : { "CERT" : 35038 } }
+{ "_id" : { "CERT" : 58308 } }
+{ "_id" : { "CERT" : 34392 } }
+{ "_id" : { "CERT" : 35356 } }
+Type "it" for more
+dxcdb 31>it
+{ "_id" : { "CERT" : 32280 } }
+{ "_id" : { "CERT" : 34301 } }
+{ "_id" : { "CERT" : 32247 } }
+{ "_id" : { "CERT" : 2303 } }
+{ "_id" : { "CERT" : 35065 } }
+{ "_id" : { "CERT" : 57448 } }
+{ "_id" : { "CERT" : 33513 } }
+{ "_id" : { "CERT" : 24957 } }
+{ "_id" : { "CERT" : 35469 } }
+{ "_id" : { "CERT" : 18243 } }
+{ "_id" : { "CERT" : 35462 } }
+{ "_id" : { "CERT" : 35463 } }
+{ "_id" : { "CERT" : 22846 } }
+{ "_id" : { "CERT" : 57212 } }
+{ "_id" : { "CERT" : 23626 } }
+{ "_id" : { "CERT" : 57860 } }
+{ "_id" : { "CERT" : 1690 } }
+{ "_id" : { "CERT" : 34255 } }
+{ "_id" : { "CERT" : 35517 } }
+{ "_id" : { "CERT" : 35419 } }
+Type "it" for more...............
+_______________________________________here is many duplicate data..........to find these...we have add some unique id.....
+dxcdb 32>db.banklist.aggregate([{$group: {_id:{CERT: "$CERT"},uniqueIds:{$addToSet:"$_id"}}}])
+{ "_id" : { "CERT" : 3735 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf4e") ] }
+{ "_id" : { "CERT" : 4862 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae28") ] }
+{ "_id" : { "CERT" : 26778 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab02a") ] }
+{ "_id" : { "CERT" : 26838 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab02c") ] }
+{ "_id" : { "CERT" : 17557 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae3a") ] }
+{ "_id" : { "CERT" : 22130 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafbd") ] }
+{ "_id" : { "CERT" : 27364 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafc8") ] }
+{ "_id" : { "CERT" : 34396 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaff0") ] }
+{ "_id" : { "CERT" : 34818 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaec4") ] }
+{ "_id" : { "CERT" : 22853 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf4d") ] }
+{ "_id" : { "CERT" : 57360 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf3b") ] }
+{ "_id" : { "CERT" : 57697 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf3d") ] }
+{ "_id" : { "CERT" : 9262 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafdc") ] }
+{ "_id" : { "CERT" : 57157 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae75") ] }
+{ "_id" : { "CERT" : 34563 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab002") ] }
+{ "_id" : { "CERT" : 31581 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae86") ] }
+{ "_id" : { "CERT" : 16089 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaef7") ] }
+{ "_id" : { "CERT" : 35259 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae25") ] }
+{ "_id" : { "CERT" : 27935 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaeac") ] }
+{ "_id" : { "CERT" : 34965 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaef4") ] }
+Type "it" for more
+dxcdb 33>it
+{ "_id" : { "CERT" : 32167 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf86") ] }
+{ "_id" : { "CERT" : 33904 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaef9") ] }
+{ "_id" : { "CERT" : 34486 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf25"), ObjectId("5dba818ff1dbeb999ecab043") ] }
+{ "_id" : { "CERT" : 57794 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafa8") ] }
+{ "_id" : { "CERT" : 27344 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf0a") ] }
+{ "_id" : { "CERT" : 19040 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaee2") ] }
+{ "_id" : { "CERT" : 32218 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafa2") ] }
+{ "_id" : { "CERT" : 28344 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab010") ] }
+{ "_id" : { "CERT" : 8266 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaff5") ] }
+{ "_id" : { "CERT" : 35096 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae33") ] }
+{ "_id" : { "CERT" : 27203 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab02d") ] }
+{ "_id" : { "CERT" : 27405 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae65") ] }
+{ "_id" : { "CERT" : 19758 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaef1") ] }
+{ "_id" : { "CERT" : 57928 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae7f") ] }
+{ "_id" : { "CERT" : 16445 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecab030") ] }
+{ "_id" : { "CERT" : 22710 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaf41") ] }
+{ "_id" : { "CERT" : 34692 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaed2") ] }
+{ "_id" : { "CERT" : 1909 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaafba") ] }
+{ "_id" : { "CERT" : 57041 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaae44") ] }
+{ "_id" : { "CERT" : 57943 }, "uniqueIds" : [ ObjectId("5dba818ff1dbeb999ecaaff3") ] }
+Type "it" for more............................
+___________________________here few data has 2,3 times ObjectId.....it shows that the data is duplicated...............
+
+ 
+		
