@@ -1,0 +1,778 @@
+All git commands with result of executing the commands
+____________________________________________________________
+____________________________________________________________
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git
+$ git init
+Initialized empty Git repository in C:/Users/ksaha6/Desktop/Training/Git/my-dxc-git/.git/
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git remote add origin https://github.com/Koushik-Saha19/my-dxc.git
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git pull origin master
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (9/9), done.
+From https://github.com/Koushik-Saha19/my-dxc
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Joe.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git add Joe.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Joe.txt
+
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git commit -m "Koushik Created Joe.txt"
+[master 435b6bd] Koushik Created Joe.txt
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Joe.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        One.txt
+        Two.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        One.txt
+        Three.txt
+        Two.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git add -A
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1.txt
+        new file:   2.txt
+        new file:   3.txt
+
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git commit -m "Three files commited in local repository"
+[master f660336] Three files commited in local repository
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 3 insertions(+)
+ create mode 100644 1.txt
+ create mode 100644 2.txt
+ create mode 100644 3.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git log
+commit f660336c6a906dfb172e5d4000d157cbdc6ce6bd (HEAD -> master)
+Author: Saha <ksaha6@dxc.com>
+Date:   Fri Nov 15 15:11:33 2019 +0530
+
+    Three files commited in local repository
+
+commit 435b6bd7ef7ba6fdb731bd42641ae096f64bc817
+Author: Saha <ksaha6@dxc.com>
+Date:   Fri Nov 15 15:03:07 2019 +0530
+
+    Koushik Created Joe.txt
+
+commit 55af3dee3b8ec8b5fcf462a23892f2cb717e402b (origin/master)
+Author: Koushik-Saha19 <55374424+Koushik-Saha19@users.noreply.github.com>
+Date:   Fri Nov 15 14:37:28 2019 +0530
+
+    Update README.md
+
+commit bdcbe7392f1acd319aabed3ee2207177336953a1
+Author: Koushik-Saha19 <55374424+Koushik-Saha19@users.noreply.github.com>
+Date:   Fri Nov 15 14:35:59 2019 +0530
+
+    Create welcome.txt
+
+commit 5536efc05c6b0445faf44ad1967fd09cda57ed15
+Author: Koushik-Saha19 <55374424+Koushik-Saha19@users.noreply.github.com>
+Date:   Fri Nov 15 14:34:19 2019 +0530
+
+    Initial commit
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git branch firstbranch
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout firstbranch
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git commit -m "making change in firstbranch"
+On branch firstbranch
+Untracked files:
+        4.txt
+
+nothing added to commit but untracked files present
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git status
+On branch firstbranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        4.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git add 4.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git commit -m "making change in firstbranch"
+[firstbranch d6a5ed7] making change in firstbranch
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 4.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git status
+On branch firstbranch
+nothing to commit, working tree clean
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git checkout master
+Switched to branch 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout firstbranch
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git merge firstbranch
+Already up to date.
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git checkout master
+Switched to branch 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git merge firstbranch
+Updating f660336..d6a5ed7
+Fast-forward
+ 4.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 4.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout master
+Already on 'master'
+M       4.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four and dxc four
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git commit -a -m "modifying 4.txt"
+[master eeaf971] modifying 4.txt
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four and dxc four
+
+
+Four is nothing
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout master
+Already on 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four and dxc four
+
+
+Four is nothing
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git merge firstbranch
+Already up to date.
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four and dxc four
+
+
+Four is nothing
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout firstbranch
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ cat 4.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ cat 4.txt
+Four is a even number
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git commit -a -m "modifying 4.txt"
+[firstbranch 0c01aeb] modifying 4.txt
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git checkout master
+Switched to branch 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ cat 4.txt
+Four is now not four and dxc four
+
+
+Four is nothing
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout firstbranch
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ ls
+1.txt  2.txt  3.txt  4.txt  5.txt  6.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git checkout firstbranch
+Already on 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git add -A
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git commit -a -m "adding"
+[firstbranch 1386ea0] adding
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+)
+ create mode 100644 5.txt
+ create mode 100644 6.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git checkout master
+Switched to branch 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git checkout firstbranch
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch)
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: modifying 4.txt
+Using index info to reconstruct a base tree...
+M       4.txt
+Falling back to patching base and 3-way merge...
+Auto-merging 4.txt
+CONFLICT (content): Merge conflict in 4.txt
+error: Failed to merge in the changes.
+hint: Use 'git am --show-current-patch' to see the failed patch
+Patch failed at 0001 modifying 4.txt
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git checkout master
+error: you need to resolve your current index first
+4.txt: needs merge
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git rebase firstbranch
+fatal: It seems that there is already a rebase-apply directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+        git rebase (--continue | --abort | --skip)
+If that is not the case, please
+        rm -fr ".git/rebase-apply"
+and run me again.  I am stopping in case you still have something
+valuable there.
+
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git checkout master
+error: you need to resolve your current index first
+4.txt: needs merge
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git checkout firstbranch
+error: you need to resolve your current index first
+4.txt: needs merge
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ ls
+1.txt  2.txt  3.txt  4.txt  Joe.txt  README.md  welcome.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git checkout firstbranch
+error: you need to resolve your current index first
+4.txt: needs merge
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git add -A
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ ^C
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$  git rebase (--continue | --abort | --skip)
+bash: syntax error near unexpected token `('
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ ^C
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$  git rebase (--continue | --abort | --skip)
+bash: syntax error near unexpected token `('
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/ksaha6/.ssh/id_rsa):
+Created directory '/c/Users/ksaha6/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/ksaha6/.ssh/id_rsa.
+Your public key has been saved in /c/Users/ksaha6/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:bKaPMjushLPIqeRx9xkVlZxwwJs2fqW0henS33whBvU EAD+ksaha6@IN5CG9214Y8V
+The key's randomart image is:
++---[RSA 3072]----+
+|        .o+oo    |
+|         .o+ .   |
+|         .o + .  |
+|       . =.= o E |
+|        S.= *    |
+| .     +.o * o . |
+|oo.o ...  o o + .|
+|=++ * .oo    . o.|
+|=+...=.o.       .|
++----[SHA256]-----+
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat C:\Users\ksaha6\.ssh\id_rsa.pub
+cat: 'C:Usersksaha6.sshid_rsa.pub': No such file or directory
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat \C:\Users\ksaha6\.ssh\id_rsa.pub
+cat: 'C:Usersksaha6.sshid_rsa.pub': No such file or directory
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat /C:/Users/ksaha6/.ssh/id_rsa.pub
+cat: '/C:/Users/ksaha6/.ssh/id_rsa.pub': No such file or directory
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat \c\Users\ksaha6\.ssh\id_rsa.pub
+cat: cUsersksaha6.sshid_rsa.pub: No such file or directory
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat \C\Users\ksaha6\.ssh\id_rsa.pub
+cat: CUsersksaha6.sshid_rsa.pub: No such file or directory
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ cat /C/Users/ksaha6/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOhioIYdddDMvWqrWOGsausW5Qu/A3BEVCD2bpQFjbQbQXd6fVaBKTgYenHAc0JjUa7/cCy/03MYeBSIPZrm+npaTKjekQQ9GT5hk4MFfZY9ZHCyP8pcQLslwGsAuyrL12/XWklxYfSK1xDyyBW2oMwYv0VkhPESap5rAGVzyS9jG2Zqu25mKBNo8ARNBrlLEd8aFrHrwwUWO4rWi/mOCxk+LcbiCQmmPi7d4eJxLdYHjzGsiBFIoOvnk= EAD+ksaha6@IN5CG9214Y8V
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ ^C
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ ssh  -T git@github.com
+The authenticity of host 'github.com (140.82.114.3)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Host key verification failed.
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ ssh -T git@github.com
+The authenticity of host 'github.com (140.82.114.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'github.com,140.82.114.4' (RSA) to the list of known host
+Hi Koushik-Saha19! You've successfully authenticated, but GitHub does not provide sh
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git checkout firstbranch
+error: Your local changes to the following files would be overwritten by checkout:
+        4.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git commit -a -m "adding"
+[detached HEAD c2740be] adding
+ Committer: Saha <ksaha6@dxc.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git checkout firstbranch
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  c2740be adding
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> c2740be
+
+Switched to branch 'firstbranch'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git push origin firstbranch
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (18/18), 1.27 KiB | 41.00 KiB/s, done.
+Total 18 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+remote:
+remote: Create a pull request for 'firstbranch' on GitHub by visiting:
+remote:      https://github.com/Koushik-Saha19/my-dxc/pull/new/firstbranch
+remote:
+To https://github.com/Koushik-Saha19/my-dxc.git
+ * [new branch]      firstbranch -> firstbranch
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git checkout master
+Switched to branch 'master'
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 290 bytes | 58.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Koushik-Saha19/my-dxc.git
+   55af3de..eeaf971  master -> master
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git diff
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git status
+On branch master
+You are currently rebasing branch 'firstbranch' on 'eeaf971'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myResult.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBAS
+$ git diff
+diff --git a/Joe.txt b/Joe.txt
+index 1f8b0cb..e35523f 100644
+--- a/Joe.txt
++++ b/Joe.txt
+@@ -1 +1,3 @@
+-Joe is Root
+\ No newline at end of file
++Joe is Root
++
++from England
+\ No newline at end of file
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git stash save "worked on Joe.txt"
+Saved working directory and index state On master: worked on Joe.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git status
+On branch master
+You are currently rebasing branch 'firstbranch' on 'eeaf971'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myResult.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git stash list
+stash@{0}: On master: worked on Joe.txt
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git stash apply stash@{0}
+On branch master
+You are currently rebasing branch 'firstbranch' on 'eeaf971'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Joe.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myResult.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$ git diff
+diff --git a/Joe.txt b/Joe.txt
+index 1f8b0cb..e35523f 100644
+--- a/Joe.txt
++++ b/Joe.txt
+@@ -1 +1,3 @@
+-Joe is Root
+\ No newline at end of file
++Joe is Root
++
++from England
+\ No newline at end of file
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$  git rebase (--continue | --abort | --skip)
+bash: syntax error near unexpected token `('
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$  git rebase (--continue | --abort | --skip)
+bash: syntax error near unexpected token `('
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (firstbranch|REBASE 1/2)
+$  rm -fr ".git/rebase-apply"
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ git diff
+diff --git a/Joe.txt b/Joe.txt
+index 1f8b0cb..e35523f 100644
+--- a/Joe.txt
++++ b/Joe.txt
+@@ -1 +1,3 @@
+-Joe is Root
+\ No newline at end of file
++Joe is Root
++
++from England
+\ No newline at end of file
+
+EAD+ksaha6@IN5CG9214Y8V MINGW64 ~/Desktop/Training/Git/my-dxc-git (master)
+$ IN1-ABSI1.01.03
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
